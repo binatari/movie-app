@@ -2,7 +2,7 @@ import React from "react";
 
 const NavSearchBar = () => {
   return (
-    <div className="w-full flex justify-end">
+    <div className="w-full flex justify-end z-10">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
