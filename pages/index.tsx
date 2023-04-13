@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import HeroSection from "@/components/section/HeroSection";
 import MovieRow from "@/components/section/MovieRow";
+import { motion } from "framer-motion";
+import Transition from "@/components/Layouts/Transition";
 
 const inter = Inter({ subsets: ["latin"] });
 type Movies = {
@@ -32,9 +34,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <motion.main exit={{ opacity: 0 }} className="flex min-h-screen flex-col">
+      <Transition />
       <HeroSection movies={movies} />
       <MovieRow movies={movies} />
-    </main>
+    </motion.main>
   );
 }

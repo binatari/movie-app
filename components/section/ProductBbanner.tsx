@@ -25,7 +25,6 @@ const ProductBbanner = ({
   adult,
   release_date,
 }: moviedetails) => {
-  console.log(backdrop_path);
   return (
     <div
       className=" pb-[175.5px] pt-[255.5px] relative bg-center bg-cover"

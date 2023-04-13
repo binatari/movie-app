@@ -11,7 +11,9 @@ const MovieCard = ({ poster_path, title, release_date }: movie) => {
       <div
         className="rounded-[4px] h-[266px] w-full max-w-[200px] bg-center bg-cover"
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original${poster_path})`,
+          backgroundImage: poster_path
+            ? `url(https://image.tmdb.org/t/p/original${poster_path})`
+            : "url(/images/no-image.jpg)",
         }}
       ></div>
       <p className="font-semibold mt-4 mb-2 text-white">{title}</p>

@@ -3,6 +3,8 @@ import { GetStaticProps, GetStaticPropsContext } from "next";
 import ProductBbanner from "@/components/section/ProductBbanner";
 import MovieRow from "@/components/section/MovieRow";
 import CastRow from "@/components/section/CastRow";
+import { motion } from "framer-motion";
+import Transition from "@/components/Layouts/Transition";
 
 type actor = {
   name: string;
@@ -66,7 +68,8 @@ const Movie = ({
   }, []);
 
   return (
-    <div>
+    <motion.div exit={{ opacity: 0 }}>
+      <Transition />
       <ProductBbanner
         vote_average={vote_average}
         title={title}
@@ -80,7 +83,7 @@ const Movie = ({
       />
       <CastRow actors={actors} title="Cast" />
       <MovieRow movies={movies} title="You might also like" />
-    </div>
+    </motion.div>
   );
 };
 
