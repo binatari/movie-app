@@ -1,8 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Autoplay } from "swiper";
-import { type } from "os";
+import "swiper/css/effect-fade";
+import { Autoplay, EffectFade } from "swiper";
 
 type movies = {
   backdrop_path: string;

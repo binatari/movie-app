@@ -7,7 +7,7 @@ type PropsWithChildren = {
 };
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-[#1B1F32]">
+    <div className="bg-[#1B1F32] overflow-hidden">
       <Header />
       {children}
       <Footer />

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import HeroSection from "@/components/section/HeroSection";
+import MovieRow from "@/components/section/MovieRow";
 
 const inter = Inter({ subsets: ["latin"] });
 type Movies = {
@@ -12,6 +13,7 @@ type Movies = {
   release_date: string;
   overview: string;
   adult: boolean;
+  poster_path: string;
 }[];
 
 export default function Home() {
@@ -32,6 +34,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <HeroSection movies={movies} />
+      <MovieRow movies={movies} />
     </main>
   );
 }
