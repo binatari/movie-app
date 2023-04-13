@@ -5,17 +5,14 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper";
 import MovieCard from "../card/MovieCard";
 import Link from "next/link";
-
-type movies = {
-  backdrop_path: string;
+import CastMemberCard from "../card/CastMemberCard";
+type actors = {
+  name: string;
+  character: string;
+  profile_path?: string;
   id: number;
-  title: string;
-  vote_average: number;
-  release_date: string;
-  poster_path: string;
-  adult: boolean;
 }[];
-const MovieRow = ({ movies, title }: { movies: movies; title?: string }) => {
+const CastRow = ({ actors, title }: { actors?: actors; title?: string }) => {
   return (
     <div className="mt-12 mb-16">
       <div className="container mx-auto overflow-x-visible">
@@ -44,15 +41,14 @@ const MovieRow = ({ movies, title }: { movies: movies; title?: string }) => {
           className="mySwiper overflow-visible"
           style={{ overflow: "visible" }}
         >
-          {movies?.map(({ id, release_date, title, poster_path }) => (
+          {actors?.map(({ id, profile_path, character, name }) => (
             <SwiperSlide key={id} className="flex justify-center">
-              <Link href={`/movie/${id}`}>
-                <MovieCard
-                  release_date={release_date}
-                  title={title}
-                  poster_path={poster_path}
-                />
-              </Link>
+              <CastMemberCard
+                id={id}
+                profile_path={profile_path}
+                character={character}
+                name={name}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -61,4 +57,4 @@ const MovieRow = ({ movies, title }: { movies: movies; title?: string }) => {
   );
 };
 
-export default MovieRow;
+export default CastRow;
