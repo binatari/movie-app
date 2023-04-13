@@ -7,7 +7,7 @@ type actor = {
 };
 const CastMemberCard = ({ profile_path, character, name, id }: actor) => {
   return (
-    <div className="cursor-pointer">
+    <div className="w-full">
       {" "}
       <div
         className="rounded-[4px] h-[199px] w-full max-w-[199px] bg-center bg-cover"

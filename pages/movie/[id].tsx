@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import ProductBbanner from "@/components/section/ProductBbanner";
 import MovieRow from "@/components/section/MovieRow";
 import CastRow from "@/components/section/CastRow";
 import { motion } from "framer-motion";
 import Transition from "@/components/Layouts/Transition";
+import CastGrid from "@/components/section/CastGrid";
+import MovieGrid from "@/components/section/MovieGrid";
 
 type actor = {
   name: string;
@@ -67,6 +69,30 @@ const Movie = ({
     getMovies();
   }, []);
 
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
+  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
+
+  const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // const first = useRef<HTMLButtonElement>(null);
+
+  // const second = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    function setTabPosition() {
+      const currentTab = tabsRef.current[activeTabIndex];
+      console.log(currentTab?.offsetLeft, currentTab?.clientWidth);
+      setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
+      setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
+    }
+
+    setTabPosition();
+    window.addEventListener("resize", setTabPosition);
+
+    return () => window.removeEventListener("resize", setTabPosition);
+  }, [activeTabIndex]);
+
   return (
     <motion.div exit={{ opacity: 0 }}>
       <Transition />
@@ -81,8 +107,47 @@ const Movie = ({
         adult={adult}
         release_date={release_date}
       />
-      <CastRow actors={actors} title="Cast" />
-      <MovieRow movies={movies} title="You might also like" />
+      <div className="md:block hidden">
+        <CastRow actors={actors} title="Cast" />
+        <MovieRow movies={movies} title="You might also like" />
+      </div>
+      <div className=" md:hidden ">
+        <div className="relative my-6">
+          <div className="flex space-x-3 container px-[15px] text-white">
+            <button
+              ref={(el) => (tabsRef.current[0] = el)}
+              className={
+                "pt-2 pb-3" + !activeTabIndex
+                  ? "text-[#C3C5CA]"
+                  : "text-[#FDFDFD]"
+              }
+              onClick={() => setActiveTabIndex(0)}
+            >
+              Cast
+            </button>
+            <button
+              ref={(el) => (tabsRef.current[1] = el)}
+              className={
+                "pt-2 pb-3" + activeTabIndex
+                  ? "text-[#C3C5CA]"
+                  : "text-[#FDFDFD]"
+              }
+              onClick={() => setActiveTabIndex(1)}
+            >
+              Recommended
+            </button>
+          </div>
+          <span
+            className="absolute bottom-0 block h-1 bg-[#98B6FF] transition-all duration-300"
+            style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
+          />
+        </div>
+        {activeTabIndex ? (
+          <MovieGrid movies={movies} />
+        ) : (
+          <CastGrid actors={actors} />
+        )}
+      </div>
     </motion.div>
   );
 };

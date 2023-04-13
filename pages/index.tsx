@@ -37,7 +37,7 @@ export default function Home() {
     <motion.main exit={{ opacity: 0 }} className="flex min-h-screen flex-col">
       <Transition />
       <HeroSection movies={movies} />
-      <MovieRow movies={movies} />
+      <MovieRow movies={movies} title="Movies for you" />
     </motion.main>
   );
 }

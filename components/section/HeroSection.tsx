@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade } from "swiper";
+import Link from "next/link";
 
 type movies = {
   backdrop_path: string;
@@ -39,7 +40,7 @@ const HeroSection = ({ movies }: { movies?: movies }) => {
           }) => (
             <SwiperSlide
               key={id}
-              className=" pb-[175.5px] pt-[255.5px] relative"
+              className=" pb-[175.5px] pt-[255.5px] relative px-4 md:px-0"
             >
               <img
                 src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
@@ -53,15 +54,14 @@ const HeroSection = ({ movies }: { movies?: movies }) => {
                     "linear-gradient(90deg, rgba(27, 31, 50, 0.4) 41.56%, rgba(27, 31, 50, 0) 97.11%)",
                 }}
               />
-              <div className="z-50 container mx-auto w-full text-white  pr-8">
+              <div className="z-50 container mx-auto w-full text-white  sm:pr-8">
                 <div className="max-w-[592px]">
                   <p className="text-sm leading-[22px]">
                     <span className="text-[#E8BA35]">Featured</span>
                     {" | "}
                     {new Date(release_date).getFullYear()}
-                    {" | "}
                   </p>
-                  <h1 className="text-[#FDFDFD] text-[42px] leading-[44px] font-bold">
+                  <h1 className="text-[#FDFDFD] text-[27px] md:text-[42px] leading-9 md:leading-[44px] font-bold">
                     {title}
                   </h1>
                   <div className="flex gap-3 mt-5">
@@ -112,21 +112,23 @@ const HeroSection = ({ movies }: { movies?: movies }) => {
                       </svg>
                       Watch now
                     </button>
-                    <button className="bg-[#21354A] px-6 py-3 rounded-[6px] font-medium flex items-center justify-center gap-1">
-                      <svg
-                        width="14"
-                        height="15"
-                        viewBox="0 0 14 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.99999 1.66675C3.78582 1.66675 1.16666 4.28591 1.16666 7.50008C1.16666 10.7142 3.78582 13.3334 6.99999 13.3334C10.2142 13.3334 12.8333 10.7142 12.8333 7.50008C12.8333 4.28591 10.2142 1.66675 6.99999 1.66675ZM6.56249 5.16675C6.56249 4.92758 6.76082 4.72925 6.99999 4.72925C7.23916 4.72925 7.43749 4.92758 7.43749 5.16675V8.08341C7.43749 8.32258 7.23916 8.52091 6.99999 8.52091C6.76082 8.52091 6.56249 8.32258 6.56249 8.08341V5.16675ZM7.53666 10.0551C7.50749 10.1309 7.46666 10.1892 7.41416 10.2476C7.35582 10.3001 7.29166 10.3409 7.22166 10.3701C7.15166 10.3992 7.07582 10.4167 6.99999 10.4167C6.92416 10.4167 6.84832 10.3992 6.77832 10.3701C6.70832 10.3409 6.64416 10.3001 6.58582 10.2476C6.53332 10.1892 6.49249 10.1309 6.46332 10.0551C6.43416 9.98508 6.41666 9.90925 6.41666 9.83341C6.41666 9.75758 6.43416 9.68175 6.46332 9.61175C6.49249 9.54175 6.53332 9.47758 6.58582 9.41925C6.64416 9.36675 6.70832 9.32591 6.77832 9.29675C6.91832 9.23841 7.08166 9.23841 7.22166 9.29675C7.29166 9.32591 7.35582 9.36675 7.41416 9.41925C7.46666 9.47758 7.50749 9.54175 7.53666 9.61175C7.56582 9.68175 7.58332 9.75758 7.58332 9.83341C7.58332 9.90925 7.56582 9.98508 7.53666 10.0551Z"
-                          fill="white"
-                        />
-                      </svg>
-                      Learn more
-                    </button>
+                    <Link href={`/movie/${id}`}>
+                      <button className="bg-[#21354A] px-6 py-3 rounded-[6px] font-medium flex items-center border border-[#98B6FF] justify-center gap-1">
+                        <svg
+                          width="14"
+                          height="15"
+                          viewBox="0 0 14 15"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M6.99999 1.66675C3.78582 1.66675 1.16666 4.28591 1.16666 7.50008C1.16666 10.7142 3.78582 13.3334 6.99999 13.3334C10.2142 13.3334 12.8333 10.7142 12.8333 7.50008C12.8333 4.28591 10.2142 1.66675 6.99999 1.66675ZM6.56249 5.16675C6.56249 4.92758 6.76082 4.72925 6.99999 4.72925C7.23916 4.72925 7.43749 4.92758 7.43749 5.16675V8.08341C7.43749 8.32258 7.23916 8.52091 6.99999 8.52091C6.76082 8.52091 6.56249 8.32258 6.56249 8.08341V5.16675ZM7.53666 10.0551C7.50749 10.1309 7.46666 10.1892 7.41416 10.2476C7.35582 10.3001 7.29166 10.3409 7.22166 10.3701C7.15166 10.3992 7.07582 10.4167 6.99999 10.4167C6.92416 10.4167 6.84832 10.3992 6.77832 10.3701C6.70832 10.3409 6.64416 10.3001 6.58582 10.2476C6.53332 10.1892 6.49249 10.1309 6.46332 10.0551C6.43416 9.98508 6.41666 9.90925 6.41666 9.83341C6.41666 9.75758 6.43416 9.68175 6.46332 9.61175C6.49249 9.54175 6.53332 9.47758 6.58582 9.41925C6.64416 9.36675 6.70832 9.32591 6.77832 9.29675C6.91832 9.23841 7.08166 9.23841 7.22166 9.29675C7.29166 9.32591 7.35582 9.36675 7.41416 9.41925C7.46666 9.47758 7.50749 9.54175 7.53666 9.61175C7.56582 9.68175 7.58332 9.75758 7.58332 9.83341C7.58332 9.90925 7.56582 9.98508 7.53666 10.0551Z"
+                            fill="white"
+                          />
+                        </svg>
+                        Learn more
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+import { calcRuntime } from "@/utils/utilities";
 import React from "react";
 
 type moviedetails = {
@@ -25,9 +26,11 @@ const ProductBbanner = ({
   adult,
   release_date,
 }: moviedetails) => {
+  const runTime = calcRuntime(runtime);
+  const genreList = genres.map((genre) => genre.name).join(", ");
   return (
     <div
-      className=" pb-[175.5px] pt-[255.5px] relative bg-center bg-cover"
+      className=" pb-[175.5px] pt-[255.5px] relative bg-center bg-cover px-4 md:px-0"
       style={{
         background: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
       }}
@@ -42,12 +45,13 @@ const ProductBbanner = ({
       <div className="z-50 container mx-auto w-full text-white  pr-8">
         <div className="max-w-[592px]">
           <p className="text-sm leading-[22px]">
-            <span className="text-[#E8BA35]">Featured</span>
+            {genreList}
             {" | "}
             {new Date(release_date).getFullYear()}
             {" | "}
+            <span className="text-[#E8BA35]">{runTime}</span>
           </p>
-          <h1 className="text-[#FDFDFD] text-[42px] leading-[44px] font-bold">
+          <h1 className="text-[#FDFDFD]  text-[27px] md:text-[42px] leading-9 md:leading-[44px] font-bold">
             {title}
           </h1>
           <div className="flex gap-3 mt-5">

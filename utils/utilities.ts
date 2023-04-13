@@ -1,5 +1,6 @@
-export const calcRuntime = (runtime: number): string => {
-  const minutes = runtime % 60;
-  const hours = "";
-  return hours;
+export const calcRuntime = (totalMinutes: number): string => {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  return `${hours}h ${minutes}m`;
 };
