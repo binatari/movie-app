@@ -14,9 +14,9 @@ type actors = {
 }[];
 const CastRow = ({ actors, title }: { actors?: actors; title?: string }) => {
   return (
-    <div className="mt-12 mb-16 px-4 md:px-0">
+    <div className="mt-12 mb-16 px-4 md:px-0 z-[9999]">
       <div className="container mx-auto overflow-x-visible">
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between mb-6 z-[9999] relative">
           <p className="text-[20px] font-semibold text-white ">{title}</p>
           <div className="flex gap-2 items-center">
             <svg
