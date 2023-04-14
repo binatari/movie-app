@@ -31,7 +31,7 @@ const NavSearchBar = () => {
         <input
           type="search"
           id="default-search"
-          className="block w-full max-w-[330px] p-[10px] pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-[#1B1F32] focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block w-full max-w-[330px] p-[10px] pl-10 text-sm text-gray-900 border border-gray-300 rounded-[6px] bg-[#1B1F32] focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search"
           required
         />

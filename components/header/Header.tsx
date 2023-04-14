@@ -33,7 +33,7 @@ const Header = () => {
           <div className="py-8 bg-[#1B1F32] w-full flex md:hidden justify-center">
             <NavSearchBar />
           </div>
-          <div className="min-h-screen w-full blur-sm bg-black bg-opacity-60"></div>
+          <div className="min-h-screen w-full blur-sm bg-black bg-opacity-60 z-[9999] relative"></div>
         </div>
       ) : null}
     </div>
