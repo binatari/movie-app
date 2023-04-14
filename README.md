@@ -1,8 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Tools used
+
+The tools used for this project are:
+
+Next.js (please find installation and how to run locally below)
+Tailwindcss
+Framer motion for animations
+Typescrift to improve readability and type safety
+swiper for eassy carouusel implementation
+
+Note:Due to an unforseen bug in Next13 i was unable to abstract url and api key to an environment variable, o have however provided an example file for how this wold be ideally done
+
 ## Getting Started
 
-First, run the development server:
+First, install node packages using npm i the run the development server:
 
 ```bash
 npm run dev
