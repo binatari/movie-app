@@ -14,7 +14,7 @@ Note:Due to an unforseen bug in Next13 i was unable to abstract url and api key 
 
 ## Getting Started
 
-First, install node packages using npm i the run the development server:
+First, install node packages using npm i the run the development server (please ensure your node version is up to date for better compatibility):
 
 ```bash
 npm run dev
