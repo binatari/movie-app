@@ -22,7 +22,7 @@ export default function Home() {
   const [movies, setMovies] = useState<Movies>([]);
   const getMovies = () => {
     fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=79df6e7ff6e4584f69159203960ebedc`
     )
       .then((res) => res.json())
       .then((res) => setMovies(res.results))

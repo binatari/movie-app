@@ -184,11 +184,11 @@ export async function getStaticPaths() {
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   const getMovie = await fetch(
-    `https://api.themoviedb.org/3/movie/${params?.id}?api_key=${process.env.API_KEY}`
+    `https://api.themoviedb.org/3/movie/${params?.id}?api_key=79df6e7ff6e4584f69159203960ebedc`
   );
 
   const getCast = await fetch(
-    `https://api.themoviedb.org/3/movie/${params?.id}/credits?api_key=${process.env.API_KEY}`
+    `https://api.themoviedb.org/3/movie/${params?.id}/credits?api_key=79df6e7ff6e4584f69159203960ebedc`
   );
 
   const movie: moviedetails = await getMovie.json().then((res) => res);
